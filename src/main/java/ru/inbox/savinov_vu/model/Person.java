@@ -24,8 +24,7 @@ public class Person implements Persistable<Integer>{
 
     private @NonNull String password;
 
-    private @NonNull
-    LocalDate birthDate;
+    private @NonNull LocalDate birthDate;
 
     public Person(String login, String password, LocalDate birthDate) {
         this.login = login;
