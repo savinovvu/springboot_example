@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
 public class Person implements Persistable<Integer>{
     @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     private @NonNull  String login;
@@ -33,13 +33,10 @@ public class Person implements Persistable<Integer>{
         this.birthDate = birthDate;
     }
 
-    @Override
-    public Integer getId() {
-        return null;
-    }
+
 
     @Override
     public boolean isNew() {
-        return false;
+        return getId() == null;
     }
 }
