@@ -5,7 +5,10 @@ CREATE TABLE IF NOT EXISTS person
   password  VARCHAR(255),
   birthdate DATE,
   PRIMARY KEY (id)
-);
+)
+ DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+ALTER TABLE person AUTO_INCREMENT=1000;
 
 DELETE FROM person;
 
