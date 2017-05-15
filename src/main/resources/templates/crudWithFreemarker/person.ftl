@@ -1,29 +1,56 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>StartPage</title>
+    <title>ExpamplePage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
-    <link href="/static/css/common/common.css" rel="stylesheet">
-    <link href="/static/css/start/start.css" rel="stylesheet">
 
-    <link href="css/common/common.css" rel="stylesheet">
-    <link href="css/start/start.css" rel="stylesheet">
 
+    <script type="text/javascript" src="webjars/jquery/3.1.1-1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js" defer></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js" defer></script>
 </head>
-<body>
-<div class="parent">
-    <div class="menu">
+<body >
 
-        <form action="freemarkergetAll" method="get">
-            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Построено с помощью freemarker">
-        </form>
 
-        <form action="markWithJS" method="get">
-            <input class="btn btn-primary" type="submit" name="viewAllUsers" value="Построено с помощью JS">
-        </form>
-
-    </div>
+<div style="margin:30px">
+<#import "../fragment/addform.ftl" as e>
+<@e.inputForm />
 </div>
+
+<div style="margin:30px"></div>
+
+<table class="table table-bordered table-stripped table-condensed">
+    <thead>
+    <tr class="success">
+        <td>id</td>
+        <td>login</td>
+        <td>password</td>
+        <td>Дата рождения</td>
+
+    <tr>
+    </thead>
+
+<#list persons as person>
+
+    <@tableLine person=person/>
+
+
+    <#macro tableLine person>
+        <tr>
+            <td>${person.id}</td>
+            <td>${person.login}</td>
+            <td>${person.password}</td>
+            <td>${person.birthDate}</td>
+        </tr>
+    </#macro>
+</#list>
+
+
+</table>
+
+<p>Всего записей: ${persons?size}
+
 
 
 </body>
