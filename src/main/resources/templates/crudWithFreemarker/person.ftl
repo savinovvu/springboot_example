@@ -1,4 +1,4 @@
-<#import "../fragment/addform.ftl" as e>
+<#import "fragment/addform.ftl" as e>
 <html>
 <head>
     <meta charset="UTF-8">

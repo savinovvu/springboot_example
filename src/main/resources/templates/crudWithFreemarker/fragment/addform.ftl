@@ -1,4 +1,4 @@
-<#import "../fragment/addfield.ftl" as e>
+<#import "addfield.ftl" as e>
 <#macro inputForm actionName method action id login password birthdate>
 
 <div class="view-box">
