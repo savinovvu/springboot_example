@@ -47,5 +47,4 @@ dependencies {
     compile "org.webjars:datatables:1.10.12-1"
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	/*testRuntime('org.hsqldb:hsqldb')*/
 }
