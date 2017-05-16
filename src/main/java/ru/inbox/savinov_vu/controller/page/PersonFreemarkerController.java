@@ -40,7 +40,7 @@ public class PersonFreemarkerController {
     private Person parsePerson(HttpServletRequest request) {
         Integer id = null;
         if (Objects.nonNull(request.getParameter("id"))) {
-            id = Integer.valueOf(request.getParameter("id").replaceAll("\\D", ""));
+            id = Integer.valueOf(request.getParameter("id"));
         }
         String login = request.getParameter("login");
         String password = request.getParameter("password");
@@ -51,7 +51,7 @@ public class PersonFreemarkerController {
 
     @PostMapping("/delete")
     public String delete(Model model, HttpServletRequest request) {
-        Integer id = Integer.valueOf(request.getParameter("id").replaceAll("\\D", ""));
+        Integer id = Integer.valueOf(request.getParameter("id"));
         log.debug("delete person with id = {}", id);
         personService.delete(id);
         return "redirect:/markWithFreemarker";

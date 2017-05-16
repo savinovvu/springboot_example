@@ -48,10 +48,10 @@
             <td>${person.password}</td>
             <td>${person.birthDate}</td>
             <td width="10%">
-           <@e.inputForm "Обновить" "post" "update" "${person.id}" "${person.login}" "${person.password}" "${person.birthDate}"/>
+           <@e.inputForm "Обновить" "post" "update" "${person.id?c}" "${person.login}" "${person.password}" "${person.birthDate}"/>
             </td>
             <td width="10%">
-           <@e.inputForm "Удалить" "post" "delete" "${person.id}" "" "" ""/>
+           <@e.inputForm "Удалить" "post" "delete" "${person.id?c}" "" "" ""/>
             </td>
         </tr>
     </#macro>
