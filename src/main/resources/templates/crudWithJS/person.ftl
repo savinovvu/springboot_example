@@ -1,4 +1,3 @@
-<#import "../fragment/addfield.ftl" as e>
 <html>
 <head>
     <meta charset="UTF-8">
