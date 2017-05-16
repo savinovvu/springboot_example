@@ -1,13 +1,15 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
 buildscript {
-	ext {
-		springBootVersion = '1.5.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -18,26 +20,35 @@ apply plugin: 'war'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
+
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 configurations {
-	providedRuntime
+    providedRuntime
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-freemarker')
-	compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-freemarker')
+    compile('org.springframework.boot:spring-boot-devtools')
 
 
-	runtime('mysql:mysql-connector-java')
-	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    runtime('mysql:mysql-connector-java')
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
 
-	compileOnly('org.projectlombok:lombok')
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-
+    compileOnly('org.projectlombok:lombok')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 
     /*webJars*/
     compile "org.webjars:bootstrap:3.3.7-1"
@@ -46,5 +57,5 @@ dependencies {
     compile "org.webjars:noty:2.2.4"
     compile "org.webjars:datatables:1.10.12-1"
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
