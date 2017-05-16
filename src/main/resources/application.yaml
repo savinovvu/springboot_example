@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  mandatory-file-encoding: utf-8
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    schema: db/schema.sql
+  profiles:
+    active: populate
+---
+spring:
+  profiles: init
+  datasource:
+    data: db/data.sql
+---
+spring:
+  profiles: populate
+  datasource:
+    data: db/data_populate.sql
+
+
+
+
+
+
+
+
+
