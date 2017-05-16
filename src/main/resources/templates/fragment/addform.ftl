@@ -1,16 +1,18 @@
-<#macro inputForm >
+<#import "../fragment/addfield.ftl" as e>
+<#macro inputForm actionName method action id login password birthdate>
 
 <div class="view-box">
-    <div class="menu">
+<div class="menu">
+        <label
+        for="btn${action}${id}" class="btn btn-lg custombtn <#if action =="delete">btn-danger<#else>btn-success</#if>">${actionName}</label>
 
-        <button type="button" class="btn btn-lg btn-success custombtn " data-toggle="modal"
-                data-target="#myModal">
-            Добавить
-        </button>
-    </div>
+    <button id="btn${action}${id}" type="button" class="hidden" data-toggle="modal"
+            data-target="#myModal${action}${id}">
+    </button>
+</div>
 
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="myModal${action}${id}" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -18,41 +20,23 @@
                     <h4 class="modal-title text-center" id="myModalLabel">Добавление</h4>
                 </div>
                 <div class="modal-body">
-                    <form role="form" class="form-horizontal" method="get" action="add" >
+                    <form role="form" class="form-horizontal" method="${method}" action="${action}">
 
-                        <div class="form-group has-feedback">
-                            <label for="name" class="control-label col-xs-3">login:</label>
-                            <div class="col-xs-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="text" class="form-control" name="login" required/>
-                                </div>
+                        <#if id != "" >
+                            <@e.inputfield "id" "id" "${id}" "text" "readonly" />
+                        </#if>
 
-                            </div>
-                        </div>
+                        <#if login != "" || action="add">
+                            <@e.inputfield "логин" "login" "${login}" "text" "" />
+                        </#if>
 
-                        <div class="form-group has-feedback">
-                            <label for="name" class="control-label col-xs-3">password:</label>
-                            <div class="col-xs-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="text" class="form-control" name="password" required/>
-                                </div>
+                        <#if password != "" || action="add">
+                            <@e.inputfield "пароль" "password" "${password}" "text" "" />
+                        </#if>
 
-                            </div>
-                        </div>
-
-                        <div class="form-group has-feedback">
-                            <label for="name" class="control-label col-xs-3">birthdate:</label>
-                            <div class="col-xs-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="date" class="form-control" name="birthdate" required/>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        <#if birthdate != "" || action="add">
+                            <@e.inputfield "дата рождения" "birthdate" "${birthdate}" "date" "" />
+                        </#if>
 
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-primary" value="Выполнить">
@@ -68,4 +52,3 @@
 
 </#macro>
 
-<#assign mail = "user@example.com">
