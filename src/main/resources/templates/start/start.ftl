@@ -3,8 +3,6 @@
     <meta charset="UTF-8">
     <title>StartPage</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
-    <link href="/static/css/common/common.css" rel="stylesheet">
-    <link href="/static/css/start/start.css" rel="stylesheet">
 
     <link href="css/common/common.css" rel="stylesheet">
     <link href="css/start/start.css" rel="stylesheet">
