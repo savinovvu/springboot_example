@@ -13,7 +13,7 @@ spring:
     initialize: true
     schema: db/schema.sql
   profiles:
-    active: populate
+    active: init
 ---
 spring:
   profiles: init
